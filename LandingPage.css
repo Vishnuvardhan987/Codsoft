@@ -1,0 +1,203 @@
+:root {
+  --bg: #a020db;
+  --card: #2e2c3a;
+  --accent: #ff79c6;
+  --secondary: #bd93f9;
+  --text: #ffffff;
+  --text-muted: #ccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.logo {
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.login-btn {
+  padding: 0.5rem 1rem;
+  background: var(--secondary);
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.login-btn:hover {
+  background: var(--accent);
+}
+
+/* Hero */
+.hero {
+  background: url('https://wallpapercave.com/wp/wp7280423.jpg') no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background: var(--accent);
+  padding: 0.8rem 2rem;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Genres */
+.genres {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.genre-list span {
+  background: var(--card);
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.genre-list span:hover {
+  background: var(--accent);
+}
+
+/* Top Picks */
+.top-picks {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.anime-card {
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.anime-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.anime-card h3 {
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+.anime-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Watch More */
+.watch-more {
+  background: #72726e;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.watch-more h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.watch-more p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.watch-btn {
+  padding: 0.8rem 2rem;
+  background: var(--secondary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.watch-btn:hover {
+  background: var(--accent);
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 1rem;
+  text-align: center;
+  color: #aaa;
+}

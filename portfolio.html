@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishnuvardhan Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animated-section {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background-color: #0077b6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0077b6;
+      font-weight: bold;
+      font-size: 22px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      color: #0077b6;
+      background-color: white;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      position: relative;
+      opacity: 0;
+    }
+
+    .section.visible {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #0077b6;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #0077b6, #90e0ef);
+      border-radius: 2px;
+    }
+
+    .profile-img {
+      display: block;
+      margin: 1rem auto;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 4px solid #0077b6;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .skills-list li {
+      background-color: #caf0f8;
+      padding: 0.75rem 1.5rem;
+      border-radius: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .skills-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      background-color: #90e0ef;
+    }
+
+    .skills-list li i {
+      color: #0077b6;
+      font-size: 1.2rem;
+    }
+
+    .project-card {
+      background-color: #f8f9fa;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 5px solid #00b4d8;
+      border-radius: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+    }
+
+    .project-card.visible {
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+
+    .project-card:nth-child(even).visible {
+      animation: slideInRight 0.6s ease-out forwards;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .project-title i {
+      color: #0077b6;
+      font-size: 1.5rem;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.8rem;
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.3);
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .resume-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #00b4d8, #0077b6);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    .resume-btn:hover::before {
+      left: 0;
+    }
+
+    .resume-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 119, 182, 0.4);
+    }
+
+    .resume-btn i {
+      margin-right: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #0077b6;
+      color: white;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #023e8a, #0077b6, #00b4d8);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: #90e0ef;
+      border-radius: 50%;
+      top: -30px;
+      left: -30px;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .section::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #00b4d8;
+      border-radius: 50%;
+      bottom: -30px;
+      right: -30px;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .contact-form {
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      transition: all 0.3s;
+      animation: fadeInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    .contact-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .contact-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .contact-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-item i {
+      width: 45px;
+      height: 45px;
+      background-color: #caf0f8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0077b6;
+      font-size: 1.2rem;
+    }
+
+    .contact-item a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #0077b6;
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      padding: 12px 1.8rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.3);
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 119, 182, 0.4);
+      background: linear-gradient(135deg, #006da9, #00a1c0);
+    }
+
+    .contact-form button i {
+      font-size: 1.1rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        background-color: #0077b6;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        padding: 5rem 2rem;
+        transition: all 0.5s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        align-items: flex-start;
+      }
+
+      nav ul.show {
+        right: 0;
+      }
+
+      .skills-list {
+        justify-content: flex-start;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+
+    /* Loader Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-circle {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #0077b6;
+      border-radius: 50%;
+      animation: rotate 1s linear infinite;
+    }
+
+    /* Typing animation */
+    .typing {
+      position: relative;
+      color: #0077b6;
+      font-weight: bold;
+    }
+
+    .typing::after {
+      content: "|";
+      position: absolute;
+      right: -5px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">V</div>
+      VISHNUVARDHAN
+    </div>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="nav-menu">
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+      <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+      <li><a href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="section animated-section">
+    <div class="container">
+      <img src="" alt="Your photo" class="profile-img">
+      <h1 style="text-align: center;" class="delay-1">Hello! I'm <span style="color:#0077b6" class="typing">Vishnuvardhan</span></h1>
+      <p style="text-align: center;" class="delay-2">Aspiring Developer | Creative Thinker | Intern</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I am currently an intern exploring the world of web development. Passionate about crafting interactive and aesthetic websites, I aim to deliver impactful digital experiences.</p>
+      <p style="margin-top: 10px;">With a strong foundation in front-end technologies and a keen eye for design, I strive to create user-friendly interfaces that provide seamless interactions. I'm constantly learning and expanding my skill set to stay current with the latest web development trends.</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li><i class="fab fa-html5"></i> HTML</li>
+        <li><i class="fab fa-css3-alt"></i> CSS</li>
+        <li><i class="fab fa-js"></i> JavaScript</li>
+        <li><i class="fab fa-python"></i> Python</li>
+        <li><i class="fas fa-database"></i> MySQL</li>
+        <li><i class="fab fa-react"></i> React</li>
+        <li><i class="fab fa-bootstrap"></i> Bootstrap</li>
+        <li><i class="fas fa-mobile-alt"></i> Responsive Design</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Portfolio Website</h3>
+        </div>
+        <p>A modern, animated portfolio showcasing HTML, CSS, and responsive design with section navigation and resume download functionality.</p>
+        <img src="C:\Users\admin\Pictures\Screenshots\Screenshot 2025-05-09 002349.png" alt="Project image" style="width:100%; border-radius:10px; margin-top:1rem;">
+      </div>
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-users-cog"></i>
+          <h3>Aeroplane Management System</h3>
+        </div>
+        <p>Developed an Aeroplane management system using HTML,CSS ,PHP & MYSQL and PHPMYADMIN for backend.</p>
+        <img src="C:\Users\admin\Pictures\Screenshots\Screenshot 2025-05-09 002852.png" alt="Project image" style="width:100%; border-radius:10px; margin-top:1rem;">
+      </div>
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-shopping-cart"></i>
+          <h3>E-commerce Website</h3>
+        </div>
+        <p>A fully functional online store with product listings, shopping cart, and checkout process. Built with HTML, CSS, JavaScript, and integrated with payment processing.</p>
+        <img src="C:\Users\admin\Pictures\Screenshots\Screenshot 2025-05-09 003105.png" alt="Project image" style="width:100%; border-radius:10px; margin-top:1rem;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="section">
+    <div class="container">
+      <h2>Resume</h2>
+      <p style="text-align:center;">Check out my resume to learn more about my education, experience, and qualifications.</p>
+      <div style="text-align:center;">
+        <a href="Vishnuvardhan_Resume.pdf" class="resume-btn" download>
+          <i class="fas fa-download"></i> Download My Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p style="text-align:center; margin-bottom:1.5rem;">Feel free to reach out via any of the platforms below or send me a message directly.</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:vishnukk4117@gmail.com">vishnukk4117@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:+9198970887398">+91 89708 87398</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Location</h4>
+            <p>Hyderabad, India</p>
+          </div>
+        </div>
+      </div>
+      
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vishnuvardhan | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Loader animation
+    window.addEventListener('load', function() {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('hidden');
+      
+      // Animate sections on scroll
+      const sections = document.querySelectorAll('.section');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      projectCards.forEach(card => {
+        observer.observe(card);
+      });
+      
+      // Mobile menu toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('#nav-menu');
+      
+      hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking on a link
+      const navLinks = document.querySelectorAll('#nav-menu li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navMenu.classList.remove('show');
+          hamburger.classList.remove('active');
+        });
+      });
+      
+      // Typing effect
+      const words = ["Vishnuvardhan", "Web Developer", "Designer"];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingElement = document.querySelector('.typing');
+      
+      function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+          typingElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+        
+        if (!isDeleting && charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(type, 1500);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(type, 500);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 150);
+        }
+      }
+      
+      setTimeout(type, 1000);
+    });
+  </script>
+</body>
+
+</html>
